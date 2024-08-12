@@ -9,12 +9,12 @@
 	],
 	"exports": {
 		".": {
-			"default": "./dist/aruco-marker.modern.js",
-			"types": "./dist/aruco-marker.d.ts"
+			"types": "./dist/aruco-marker.d.ts",
+			"default": "./dist/aruco-marker.modern.js"
 		},
 		"./element": {
-			"default": "./dist/element.modern.js",
-			"types": "./dist/element.d.ts"
+			"types": "./dist/element.d.ts",
+			"default": "./dist/element.modern.js"
 		}
 	},
 	"main": "./dist/aruco-marker.cjs",

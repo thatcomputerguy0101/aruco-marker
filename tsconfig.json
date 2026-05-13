@@ -16,7 +16,16 @@
 		"skipLibCheck": true,
 		"baseUrl": ".",
 		"allowJs": true,
-		"paths": { "aruco-marker": ["./src/aruco-marker.ts"] }
+		"paths": {
+			"aruco-marker": [
+				"./src/aruco-marker.ts"
+			]
+		}
 	},
-	"include": ["src/*.ts"]
+	"include": [
+		"src/*.ts"
+	],
+	"ts-node": {
+		"logError": true
+	}
 }

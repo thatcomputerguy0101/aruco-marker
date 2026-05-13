@@ -28,7 +28,7 @@ describe('arucoMarkerMatrix', () => {
 			[0, 0, 0, 0, 1],
 		];
 
-		assert.deepEqual(expected, arucoMarkerMatrix(1));
+		assert.deepEqual(arucoMarkerMatrix(1), expected);
 	});
 
 	it('can generate a marker matrix for 18', () => {
@@ -40,7 +40,7 @@ describe('arucoMarkerMatrix', () => {
 			[0, 0, 1, 0, 1],
 		];
 
-		assert.deepEqual(expected, arucoMarkerMatrix(18));
+		assert.deepEqual(arucoMarkerMatrix(18), expected);
 	});
 
 	it('can generate SVG', () => {
@@ -58,7 +58,7 @@ describe('arucoMarkerMatrix', () => {
 			'  <rect x="5" y="5" width="1" height="1" fill="white" stroke="white" stroke-width="0.01" />\n' +
 			'</svg>';
 
-		assert.equal(expected, arucoToSVGString(18));
+		assert.equal(arucoToSVGString(18), expected);
 	});
 
 	it('can generate SVG with dimensions', () => {
@@ -76,6 +76,6 @@ describe('arucoMarkerMatrix', () => {
 			'  <rect x="5" y="5" width="1" height="1" fill="white" stroke="white" stroke-width="0.01" />\n' +
 			'</svg>';
 
-		assert.equal(expected, arucoToSVGString(18, '5em'));
+		assert.equal(arucoToSVGString(18, '5em'), expected);
 	});
 });

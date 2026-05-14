@@ -48,7 +48,9 @@ export function arucoToSVGString(id: number, size?: number | string) {
 		for (let x = 0; x < 5; x++) {
 			if (marker[x][y] === 1) {
 				image +=
-					`  <rect x="${x + 1}" y="${y + 1}" width="1" height="1" fill="white" ` +
+					`  <rect x="${x + 1}" y="${
+						y + 1
+					}" width="1" height="1" fill="white" ` +
 					// Slight stroke to get around aliasing issues with adjacent rectangles
 					'stroke="white" stroke-width="0.01" />\n';
 			}

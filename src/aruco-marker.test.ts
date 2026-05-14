@@ -1,6 +1,5 @@
 import { arucoMarkerMatrix, arucoToSVGString } from './aruco-marker.js';
-import { describe, it } from 'node:test';
-import assert from 'node:assert/strict';
+import { describe, assert, it } from 'vitest';
 
 describe('arucoMarkerMatrix', () => {
 	it('accepts a valid ID', () => {

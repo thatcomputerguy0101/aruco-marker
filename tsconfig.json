@@ -16,15 +16,18 @@
 		"skipLibCheck": true,
 		"allowJs": true,
 		"paths": {
-			"aruco-marker": [
-				"./src/aruco-marker.ts"
+			"@/*": [
+				"./src/*"
 			]
-		}
+		},
+		"types": [
+			"vite/client"
+		]
 	},
 	"include": [
-		"src/*.ts"
+		"src/**/*.ts"
 	],
-	"ts-node": {
-		"logError": true
-	}
+	"exclude": [
+		"src/**/*.test.ts"
+	]
 }

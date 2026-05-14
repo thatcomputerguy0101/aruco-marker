@@ -5,16 +5,15 @@
 		"esModuleInterop": true,
 		"outDir": "./ts-out/",
 		"sourceMap": true,
-		"module": "ESNext",
+		"module": "nodenext",
 		"target": "ESNext",
 		"noEmit": true,
-		"moduleResolution": "Node",
+		"moduleResolution": "nodenext",
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"forceConsistentCasingInFileNames": true,
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
-		"baseUrl": ".",
 		"allowJs": true,
 		"paths": {
 			"aruco-marker": [

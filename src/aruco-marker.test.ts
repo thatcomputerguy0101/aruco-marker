@@ -1,4 +1,5 @@
 import { arucoMarkerMatrix, arucoToSVGString } from './aruco-marker.js';
+import { ARUCO_5X5_1000 } from './dictionaries/aruco_5x5_1000.js';
 import { describe, assert, it } from 'vitest';
 
 describe('arucoMarkerMatrix', () => {
@@ -76,5 +77,36 @@ describe('arucoMarkerMatrix', () => {
 			'</svg>';
 
 		assert.equal(arucoToSVGString(18, '5em'), expected);
+	});
+
+	it('can generate a marker matrix from ArUco 5x5', () => {
+		var expected = [
+			[1, 0, 0, 1, 1],
+			[0, 1, 1, 0, 1],
+			[1, 0, 1, 1, 1],
+			[0, 1, 0, 0, 0],
+			[0, 1, 0, 1, 0],
+		];
+
+		assert.deepEqual(
+			arucoMarkerMatrix(0, ARUCO_5X5_1000).map((row) => row.join()),
+			expected.map((row) => row.join()),
+		);
+	});
+
+	it('can generate a marker matrix from AprilTag 36h11', () => {
+		var expected = [
+			[1, 0, 0, 1, 0, 0],
+			[1, 1, 1, 0, 1, 0],
+			[0, 1, 1, 1, 0, 0],
+			[1, 1, 0, 0, 1, 1],
+			[0, 0, 0, 0, 1, 0],
+			[1, 1, 0, 0, 0, 0],
+		];
+
+		assert.deepEqual(
+			arucoMarkerMatrix(0, 'APRILTAG_36h11').map((row) => row.join()),
+			expected.map((row) => row.join()),
+		);
 	});
 });

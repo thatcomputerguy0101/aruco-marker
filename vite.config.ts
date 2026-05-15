@@ -3,6 +3,7 @@ import path from "path";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 import packageJson from "./package.json";
+import { glob } from "glob";
 
 const getPackageName = () => {
   return packageJson.name;
@@ -23,10 +24,11 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: [
-        path.resolve(__dirname, "src/aruco-marker.ts"),
-        path.resolve(__dirname, "src/element.ts"),
-      ],
+      entry: {
+        "aruco-marker": path.resolve(__dirname, "src/aruco-marker.ts"),
+        element: path.resolve(__dirname, "src/element.ts"),
+        ...Object.fromEntries((await glob(path.resolve(__dirname, "src/dictionaries/*.ts"))).map(file => ["dictionaries/" + path.basename(file, ".ts"), file])),
+      },
       name: getPackageNameCamelCase(),
     },
     sourcemap: true,

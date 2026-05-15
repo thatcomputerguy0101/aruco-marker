@@ -1,4 +1,5 @@
 import { arucoToSVGString } from '@/aruco-marker.js';
+import * as DICTIONARIES from '@/dictionaries.js';
 
 class ArucoMarkerElement extends HTMLElement {
 	constructor() {
@@ -6,7 +7,7 @@ class ArucoMarkerElement extends HTMLElement {
 	}
 
 	static get observedAttributes() {
-		return ['markerid', 'size'];
+		return ['markerid', 'size', 'dictionary'];
 	}
 
 	connectedCallback() {
@@ -14,13 +15,22 @@ class ArucoMarkerElement extends HTMLElement {
 			this.attachShadow({ mode: 'open' });
 			this._upgradeProperty('markerId');
 			this._upgradeProperty('size');
+			this._upgradeProperty('dictionary');
 		}
 
-		const svgContents = arucoToSVGString(this.markerId, this.size ?? undefined);
+		const dictionary = this.dictionary
+			? DICTIONARIES[this.dictionary as keyof typeof DICTIONARIES]
+			: undefined;
+
+		const svgContents = arucoToSVGString(
+			this.markerId,
+			this.size ?? undefined,
+			dictionary,
+		);
 		this.shadowRoot!.innerHTML = svgContents;
 	}
 
-	_upgradeProperty(prop: 'markerId' | 'size') {
+	_upgradeProperty(prop: 'markerId' | 'size' | 'dictionary') {
 		if (this.hasOwnProperty(prop)) {
 			let value = this[prop];
 			delete this[prop];
@@ -54,6 +64,18 @@ class ArucoMarkerElement extends HTMLElement {
 			this.removeAttribute('size');
 		} else {
 			this.setAttribute('size', value);
+		}
+	}
+
+	public get dictionary() {
+		return this.getAttribute('dictionary');
+	}
+
+	public set dictionary(value: string | null) {
+		if (!value) {
+			this.removeAttribute('dictionary');
+		} else {
+			this.setAttribute('dictionary', value);
 		}
 	}
 }

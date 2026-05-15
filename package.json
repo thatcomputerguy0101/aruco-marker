@@ -5,7 +5,10 @@
 	"type": "module",
 	"source": [
 		"src/aruco-marker.ts",
-		"src/element.ts"
+		"src/element.ts",
+		"src/dictionary.ts",
+		"src/dictionaries.ts",
+		"src/dictionaries/*.ts"
 	],
 	"exports": {
 		".": {
@@ -17,6 +20,14 @@
 			"types": "./dist/src/element.d.ts",
 			"import": "./dist/element.js",
 			"require": "./dist/element.cjs"
+		},
+		"./dictionary": {
+			"types": "./dist/src/dictionary.d.ts"
+		},
+		"./dictionaries/*": {
+			"types": "./dist/src/dictionaries/*.d.ts",
+			"import": "./dist/dictionaries/*.js",
+			"require": "./dist/dictionaries/*.cjs"
 		}
 	},
 	"main": "./dist/aruco-marker.cjs",
@@ -44,6 +55,7 @@
 	"author": "Benjamin Hollis",
 	"license": "MIT",
 	"devDependencies": {
+		"glob": "^13.0.6",
 		"prettier": "^3.0.1",
 		"vite": "^8.0.12",
 		"vite-plugin-dts": "5.0.0",
